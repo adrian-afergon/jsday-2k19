@@ -4,5 +4,5 @@ import {CategoryTitle} from './CategoryTitle';
 
 storiesOf('CategoryTitle', module)
   .add('with text', () => (
-  <CategoryTitle />
+    <CategoryTitle>Education</CategoryTitle>
 ));
