@@ -1,10 +1,11 @@
 import * as React from 'react';
 import './VideoItem.scss';
 
-export const VideoItem: React.FC<{}> = () => (
-  <div className="VideoItem">
-    Hello from VideoItem!
-  </div>
+interface VideoItemProps {
+  onClick: () => void;
+}
+export const VideoItem: React.FC<VideoItemProps> = ({onClick, children}) => (
+  <div className="VideoItem" onClick={(event) => {onClick(); }}>{children}</div>
 );
 
 VideoItem.displayName = 'VideoItem';
