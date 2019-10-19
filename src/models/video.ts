@@ -1,5 +1,7 @@
+export type VideoId = string;
+
 export interface Video {
-  id: string;
+  id: VideoId;
   title: string;
   category: string;
   url: string;
