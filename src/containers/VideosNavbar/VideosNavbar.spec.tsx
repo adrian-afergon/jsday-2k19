@@ -65,10 +65,14 @@ describe('VideosNavbar', () => {
       <VideosNavbar {...properties}/>,
     );
 
-    const videosInTerror: Video[] = []; // ?
-    const videosInAction: Video[] = []; // ?
-    expect(videosInTerror).toBe(1);
-    expect(videosInAction).toBe(2);
+    const videosInTerror = renderResult
+      .getByTestId('category-block-terror')
+      .querySelectorAll('[data-testid=\'video-item\']');
+    const videosInAction = renderResult
+      .getByTestId('category-block-action')
+      .querySelectorAll('[data-testid=\'video-item\']');
+    expect(videosInTerror.length).toBe(1);
+    expect(videosInAction.length).toBe(2);
     // what happen in videos without category? -> new test
   });
 });
