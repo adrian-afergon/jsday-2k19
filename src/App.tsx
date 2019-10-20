@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <header className="App-header" >
         My videos
       </header>
-      <section>
+      <section className="App-content">
         <VideosNavbar videos={[]} categories={[]}/>
         <VideoDetails selectedVideo={selectedVideo} onSave={handleSave}/>
       </section>
