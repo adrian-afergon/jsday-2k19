@@ -5,7 +5,7 @@ import { Video, VideoId } from '../../models/video';
 import { VideoItem } from '../../components/VideoItem';
 
 describe('VideosNavbar', () => {
-  let categories: string [];
+  let categories: string[];
   let videos: Video[];
   beforeEach(() => {
     categories = [];
@@ -50,5 +50,25 @@ describe('VideosNavbar', () => {
     const foundCategories = renderResult
       .queryAllByTestId('category-title', { exact: false });
     expect(foundCategories.length).toBe(categories.length);
+  });
+
+  it('should display the videos classified by categories', () => {
+    const terrorCategory = 'terror';
+    const actionCategory = 'action';
+    const aVideo1: Video = {title: 'irrelevant', url: 'irrelevant', comments: [], category: terrorCategory, id: '1'};
+    const aVideo2: Video = {title: 'irrelevant', url: 'irrelevant', comments: [], category: actionCategory, id: '2'};
+    const aVideo3: Video = {title: 'irrelevant', url: 'irrelevant', comments: [], category: actionCategory, id: '3'};
+    categories = [terrorCategory, actionCategory];
+    videos = [aVideo1, aVideo2, aVideo3];
+    const properties = {categories, videos};
+    const renderResult: RenderResult = render(
+      <VideosNavbar {...properties}/>,
+    );
+
+    const videosInTerror: Video[] = []; // ?
+    const videosInAction: Video[] = []; // ?
+    expect(videosInTerror).toBe(1);
+    expect(videosInAction).toBe(2);
+    // what happen in videos without category? -> new test
   });
 });
