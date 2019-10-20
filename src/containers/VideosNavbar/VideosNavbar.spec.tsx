@@ -7,13 +7,13 @@ import { VideoItem } from '../../components/VideoItem';
 describe('VideosNavbar', () => {
   let categories: string [];
   let videos: Video[];
-
   beforeEach(() => {
     categories = [];
     videos = [];
   });
 
-  it('should display all the videos', () => {
+  it('should display a message when list of videos is empty', () => {
+    videos = [];
     const properties = {categories, videos};
     const renderResult: RenderResult = render(
       <VideosNavbar {...properties}/>,
@@ -22,6 +22,21 @@ describe('VideosNavbar', () => {
     const foundVideos = renderResult
       .getByTestId('VideosNavbar')
       .querySelectorAll('VideoItem');
+    // expect(foundVideos.length).toBe(videos.length);
+    expect(renderResult.queryByText('Not videos found')).toBeTruthy();
+  });
+
+  it('should display all the videos', () => {
+    const aVideo1: Video = {title: 'irrelevant', url: 'irrelevant', comments: [], category: 'irrelevant', id: '1'};
+    const aVideo2: Video = {title: 'irrelevant', url: 'irrelevant', comments: [], category: 'irrelevant', id: '2'};
+    videos = [aVideo1, aVideo2];
+    const properties = {categories, videos};
+    const renderResult: RenderResult = render(
+      <VideosNavbar {...properties}/>,
+    );
+
+    const foundVideos = renderResult
+      .queryAllByTestId('video-item', { exact: false });
     expect(foundVideos.length).toBe(videos.length);
   });
 });

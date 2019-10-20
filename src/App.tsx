@@ -9,7 +9,7 @@ const App: React.FC = () => {
         My videos
       </header>
       <section>
-        <VideosNavbar />
+        <VideosNavbar videos={[]} categories={[]}/>
       </section>
     </div>
   );
