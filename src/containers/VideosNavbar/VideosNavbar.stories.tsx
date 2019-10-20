@@ -4,5 +4,5 @@ import {VideosNavbar} from './VideosNavbar';
 
 storiesOf('VideosNavbar', module)
   .add('with text', () => (
-  <VideosNavbar />
+  <VideosNavbar categories={[]} videos={[]}/>
 ));
