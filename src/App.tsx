@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { VideosNavbar } from './containers/VideosNavbar';
+import { VideoDetails } from './containers/VideoDetails';
+import { Video } from './models/video';
 
 const App: React.FC = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const handleSave = () => {
+    throw new Error('Not implemented');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-header" >
+        My videos
       </header>
+      <section className="App-content">
+        <VideosNavbar videos={[]} categories={[]}/>
+        <VideoDetails selectedVideo={selectedVideo} onSave={handleSave}/>
+      </section>
     </div>
   );
-}
+};
 
 export default App;
