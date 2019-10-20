@@ -3,14 +3,14 @@ import './ReplyComment.scss';
 import { useState } from 'react';
 
 interface ReplyCommentProps {
-  saveComment: (newComment: string) => void;
+  onSave: (newComment: string) => void;
 }
 
-export const ReplyComment: React.FC<ReplyCommentProps> = ({saveComment}) => {
+export const ReplyComment: React.FC<ReplyCommentProps> = ({onSave}) => {
 
   const [newComment, setNewComment] = useState('');
   const onSubmit = () => {
-    saveComment(newComment);
+    onSave(newComment);
   };
 
   return (

@@ -9,7 +9,7 @@ describe('ReplyComment', () => {
     const typedText = 'This is a new comment!';
 
     const renderResult: RenderResult = render(
-      <ReplyComment saveComment={saveComment}/>,
+      <ReplyComment onSave={saveComment}/>,
     );
 
     fireEvent.change(renderResult.getByTestId('textarea'), { target: { value: typedText } });

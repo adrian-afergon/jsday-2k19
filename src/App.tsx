@@ -6,6 +6,9 @@ import { Video } from './models/video';
 
 const App: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const handleSave = () => {
+    throw new Error('Not implemented');
+  };
 
   return (
     <div className="App">
@@ -14,7 +17,7 @@ const App: React.FC = () => {
       </header>
       <section>
         <VideosNavbar videos={[]} categories={[]}/>
-        <VideoDetails selectedVideo={selectedVideo}/>
+        <VideoDetails selectedVideo={selectedVideo} onSave={handleSave}/>
       </section>
     </div>
   );

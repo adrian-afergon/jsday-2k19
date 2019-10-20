@@ -5,5 +5,5 @@ import { action } from '@storybook/addon-actions';
 
 storiesOf('ReplyComment', module)
   .add('with text', () => (
-  <ReplyComment saveComment={action('clicked')}/>
+  <ReplyComment onSave={action('clicked')}/>
 ));
