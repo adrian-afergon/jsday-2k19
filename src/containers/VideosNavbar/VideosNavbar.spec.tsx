@@ -39,4 +39,16 @@ describe('VideosNavbar', () => {
       .queryAllByTestId('video-item', { exact: false });
     expect(foundVideos.length).toBe(videos.length);
   });
+
+  it('should display all the categories', () => {
+    categories = ['irrelevant category one', 'irrelevant category two'];
+    const properties = {categories, videos};
+    const renderResult: RenderResult = render(
+      <VideosNavbar {...properties}/>,
+    );
+
+    const foundCategories = renderResult
+      .queryAllByTestId('category-title', { exact: false });
+    expect(foundCategories.length).toBe(categories.length);
+  });
 });
