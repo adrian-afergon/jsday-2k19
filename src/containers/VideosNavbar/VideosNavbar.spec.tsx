@@ -1,22 +1,9 @@
 import * as React from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import { VideosNavbar} from './';
-import { Video, VideoId } from '../../models/video';
+import { VideosNavbar } from './';
+import { Video } from '../../models/video';
 import { VideoItem } from '../../components/VideoItem';
-
-const buildVideoWidth = ({
-  id = 'irrelevant',
-  title = 'irrelevant',
-  category = 'irrelevant',
-  url = 'irrelevant',
-  comments= [],
-}): Video => ({
-  id,
-  title,
-  category,
-  url,
-  comments,
-});
+import { buildVideoWidth } from '../../helpers/build-video';
 
 const findVideosInCategory = (
   renderResult: RenderResult,
