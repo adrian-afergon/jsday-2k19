@@ -30,7 +30,6 @@ describe('VideosNavbar', () => {
     const foundVideos = renderResult
       .getByTestId('VideosNavbar')
       .querySelectorAll('VideoItem');
-    // expect(foundVideos.length).toBe(videos.length);
     expect(renderResult.queryByText('Not videos found')).toBeTruthy();
   });
 
@@ -38,6 +37,7 @@ describe('VideosNavbar', () => {
     const aVideo1: Video = buildVideoWidth({id : '1'});
     const aVideo2: Video = buildVideoWidth({id : '2'});
     videos = [aVideo1, aVideo2];
+    categories = ['irrelevant']; // TODO: we need to implement what happen when a video is not in a category
     const properties = {categories, videos};
     const renderResult: RenderResult = render(
       <VideosNavbar {...properties}/>,
