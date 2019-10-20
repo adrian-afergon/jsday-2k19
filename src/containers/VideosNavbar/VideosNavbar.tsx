@@ -1,8 +1,14 @@
 import * as React from 'react';
 import './VideosNavbar.scss';
+import { Video, VideoId } from '../../models/video';
 
-export const VideosNavbar: React.FC<{}> = () => (
-  <nav className="VideosNavbar">
+interface VideosNavbarProps {
+  videos: Video [];
+  categories: string[];
+}
+
+export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories}) => (
+  <nav className="VideosNavbar" data-testid="VideosNavbar">
     Hello from VideosNavbar!
   </nav>
 );
