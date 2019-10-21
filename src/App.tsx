@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import { VideosNavbar } from './containers/VideosNavbar';
-import { VideoDetails } from './containers/VideoDetails';
-import { Video } from './models/video';
 import { Videos } from './containers/Videos';
 import { AppDependencies, initializeDependencies } from './AppDependencies';
 
