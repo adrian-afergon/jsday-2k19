@@ -2,21 +2,21 @@ import * as React from 'react';
 import './Videos.scss';
 import { VideosNavbar } from '../VideosNavbar';
 import { VideoDetails } from '../VideoDetails';
-import { VideosRepository } from './Videos.spec';
 import { Video } from '../../models/video';
+import { AppDependencies } from '../../AppDependencies';
 
 interface VideosProps {
-  dependencies: {
-    videosRepository: VideosRepository;
-  };
+  dependencies: AppDependencies;
 }
 
 export const Videos: React.FC<VideosProps> = ({dependencies}) => {
-  const { videosRepository }  = dependencies;
+  const { videosRepository, categoriesRepository }  = dependencies;
   const [videos, setVideos] = React.useState([] as Video[]);
+  const [categories, setCategories] = React.useState([] as string[]);
 
   React.useEffect(() => {
     videosRepository.getVideos().then(setVideos);
+    categoriesRepository.getCategories().then(setCategories);
   }, []);
 
   const [selectedVideo, setSelectedVideo] = React.useState(null);
