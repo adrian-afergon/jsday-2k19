@@ -3,26 +3,19 @@ import { render, RenderResult } from '@testing-library/react';
 import { Videos } from './';
 import { VideosRepository } from '../../repositories/VideosRepository';
 import { CategoriesRepository } from '../../repositories/CategoriesRepository';
-import { AppDependencies } from '../../AppDependencies';
+import { AppDependencies, initializeDependencies } from '../../AppDependencies';
 
 describe('Videos', () => {
 
   let dependencies: AppDependencies;
-  let videosRepository: VideosRepository;
-  let categoriesRepository: CategoriesRepository;
   beforeEach(() => {
-    videosRepository = {
-      getVideos: jest.fn(() => Promise.resolve([])),
-    };
-
-    categoriesRepository = {
-      getCategories: jest.fn(() => Promise.resolve([])),
-    };
-
-    dependencies = { videosRepository, categoriesRepository};
+    dependencies = initializeDependencies();
+    dependencies.videosRepository.getVideos = jest.fn(() => Promise.resolve([]));
+    dependencies.categoriesRepository.getCategories = jest.fn(() => Promise.resolve([]));
   });
 
   it('should get the starting values when component is loaded', () => {
+    const {videosRepository, categoriesRepository} = dependencies;
     const renderResult: RenderResult = render(
       <Videos dependencies={dependencies}/>,
     );
