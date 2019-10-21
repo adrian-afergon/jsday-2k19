@@ -3,12 +3,13 @@ import './App.css';
 import { VideosNavbar } from './containers/VideosNavbar';
 import { VideoDetails } from './containers/VideoDetails';
 import { Video } from './models/video';
+import { Videos } from './containers/Videos';
 
 const App: React.FC = () => {
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  const handleSave = () => {
-    throw new Error('Not implemented');
-  };
+
+  const dependencies = {
+    videosRepository: { getVideos: () => Promise.resolve([]) },
+  }
 
   return (
     <div className="App">
@@ -16,8 +17,7 @@ const App: React.FC = () => {
         My videos
       </header>
       <section className="App-content">
-        <VideosNavbar videos={[]} categories={[]}/>
-        <VideoDetails selectedVideo={selectedVideo} onSave={handleSave}/>
+        <Videos dependencies={dependencies}/>
       </section>
     </div>
   );

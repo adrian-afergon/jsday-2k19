@@ -6,7 +6,7 @@ import { buildVideoWidth } from '../../helpers/build-video';
 describe('VideoDetails', () => {
   it('should display the default message when not have a video selected', () => {
     const renderResult: RenderResult = render(
-      <VideoDetails selectedVideo={null}/>,
+      <VideoDetails selectedVideo={null} onSave={jest.fn()}/>,
     );
     expect(renderResult.queryByText('Choose a video')).toBeTruthy();
   });
@@ -15,7 +15,7 @@ describe('VideoDetails', () => {
     const video = buildVideoWidth({id: '1'});
 
     const renderResult: RenderResult = render(
-      <VideoDetails selectedVideo={video}/>,
+      <VideoDetails selectedVideo={video} onSave={jest.fn()}/>,
     );
 
     expect(
