@@ -24,7 +24,7 @@ export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories}) 
         return {...total, [category]: foundedVideosOnCategory};
       }, {}),
     );
-  }, []);
+  }, [videos, categories]);
 
   const handleClick = () => {
     return new Error('Uninplemented method');
