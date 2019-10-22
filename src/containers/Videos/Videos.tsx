@@ -25,7 +25,7 @@ export const Videos: React.FC<VideosProps> = ({dependencies}) => {
   };
 
   return <section className="Videos">
-    <VideosNavbar videos={videos} categories={[]}/>
+    <VideosNavbar videos={videos} categories={categories}/>
     <VideoDetails selectedVideo={selectedVideo} onSave={handleSave}/>
   </section>;
 };

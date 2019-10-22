@@ -42,7 +42,9 @@ export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories}) 
             <VideoItem
               key={video.id}
               onClick={handleClick}
-              data-testid="video-item"/>,
+              data-testid="video-item">
+              {video.title}
+            </VideoItem>,
           )}
         </section>)}
     </nav>
