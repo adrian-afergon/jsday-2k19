@@ -12,9 +12,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-content {
-  display: grid;
-  grid-gap: 50px;
-  grid-template-columns: 1fr 12fr;
-}

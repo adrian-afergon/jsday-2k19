@@ -12,9 +12,7 @@ const App: React.FC = () => {
       <header className="App-header" >
         My videos
       </header>
-      <section className="App-content">
-        <Videos dependencies={dependencies}/>
-      </section>
+      <Videos dependencies={dependencies}/>
     </div>
   );
 };
