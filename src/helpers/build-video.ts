@@ -5,7 +5,7 @@ export const buildVideoWidth = ({
   title = 'irrelevant',
   category = 'irrelevant',
   url = 'irrelevant',
-  comments = [],
+  comments = [] as string[],
 }): Video => ({
   id,
   title,

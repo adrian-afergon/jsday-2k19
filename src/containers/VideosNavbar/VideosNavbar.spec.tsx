@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, RenderResult } from '@testing-library/react';
+import { fireEvent, render, RenderResult } from '@testing-library/react';
 import { VideosNavbar } from './';
 import { Video } from '../../models/video';
 import { VideoItem } from '../../components/VideoItem';
@@ -10,7 +10,7 @@ const findVideosInCategory = (
   categoryBlockTestId: string) =>
   renderResult
   .getByTestId(categoryBlockTestId)
-  .querySelectorAll('[data-testid=\'video-item\']');
+  .querySelectorAll('[data-testid^=\'video-item\']');
 
 describe('VideosNavbar', () => {
   let categories: string[];
@@ -80,5 +80,26 @@ describe('VideosNavbar', () => {
     expect(videosInTerror.length).toBe(1);
     expect(videosInAction.length).toBe(2);
     // what happen in videos without category? -> new test
+  });
+
+  it('should do something when select a video', () => {
+    const terrorCategory = 'terror';
+    const actionCategory = 'action';
+    const aVideo1: Video = buildVideoWidth({id : '1', category: terrorCategory});
+    const aVideo2: Video = buildVideoWidth({id : '2', category: actionCategory});
+    const aVideoToBeSelected: Video = buildVideoWidth({id : '3', category: actionCategory});
+
+    const onSelectVideo = jest.fn();
+
+    categories = [terrorCategory, actionCategory];
+    videos = [aVideo1, aVideo2, aVideoToBeSelected];
+    const properties = {categories, videos, onSelectVideo};
+    const renderResult: RenderResult = render(
+      <VideosNavbar {...properties}/>,
+    );
+
+    fireEvent.click(renderResult.getByTestId(`video-item-${aVideoToBeSelected.id}`));
+
+    expect(onSelectVideo).toHaveBeenCalledWith(aVideoToBeSelected);
   });
 });

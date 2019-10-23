@@ -19,13 +19,13 @@ export const Videos: React.FC<VideosProps> = ({dependencies}) => {
     categoriesRepository.getCategories().then(setCategories);
   }, []);
 
-  const [selectedVideo, setSelectedVideo] = React.useState(null);
+  const [selectedVideo, setSelectedVideo] = React.useState<Video | null>(null);
   const handleSave = () => {
     throw new Error('Not implemented');
   };
 
   return <section className="Videos">
-    <VideosNavbar videos={videos} categories={categories}/>
+    <VideosNavbar videos={videos} categories={categories} onSelectVideo={setSelectedVideo}/>
     <VideoDetails selectedVideo={selectedVideo} onSave={handleSave}/>
   </section>;
 };

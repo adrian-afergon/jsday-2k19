@@ -22,4 +22,27 @@ describe('VideoDetails', () => {
       renderResult.getByTestId(`video-details-${video.id}`),
     ).toBeTruthy();
   });
+
+  it('should display a message when no comments added', () => {
+    const video = buildVideoWidth({id: '1'});
+
+    const renderResult: RenderResult = render(
+      <VideoDetails selectedVideo={video} onSave={jest.fn()}/>,
+    );
+
+    expect(
+      renderResult.findAllByText('No comments added yet'),
+    ).toBeTruthy();
+  });
+  it('should not display a message when comments added', () => {
+    const video = buildVideoWidth({id: '1', comments: ['This is an irrelevant comment']});
+
+    const renderResult: RenderResult = render(
+      <VideoDetails selectedVideo={video} onSave={jest.fn()}/>,
+    );
+
+    expect(
+      renderResult.findAllByText('No comments added yet'),
+    ).toBeFalsy();
+  });
 });

@@ -8,9 +8,10 @@ import { ClassifiedVideos } from '../../models/clasified-videos';
 interface VideosNavbarProps {
   videos: Video [];
   categories: string[];
+  onSelectVideo?: (video: Video) => void;
 }
 
-export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories}) => {
+export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories, onSelectVideo}) => {
 
   const [classifiedVideos, setClassifiedVideos] = React.useState({} as ClassifiedVideos);
 
@@ -26,8 +27,13 @@ export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories}) 
     );
   }, [videos, categories]);
 
-  const handleClick = () => {
-    throw new Error('Uninplemented method');
+  const handleClick = (videoId: VideoId) => {
+    if (onSelectVideo) {
+      const selectedVideo = videos.find((video) => video.id === videoId);
+      if (selectedVideo) {
+        onSelectVideo(selectedVideo);
+      }
+    }
   };
 
   return (
@@ -42,7 +48,7 @@ export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories}) 
             <VideoItem
               key={video.id}
               onClick={handleClick}
-              data-testid="video-item"
+              data-testid={`video-item-${video.id}`}
               videoId={video.id}>
               {video.title}
             </VideoItem>,
