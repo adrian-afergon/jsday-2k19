@@ -27,7 +27,7 @@ export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories}) 
   }, [videos, categories]);
 
   const handleClick = () => {
-    return new Error('Uninplemented method');
+    throw new Error('Uninplemented method');
   };
 
   return (
@@ -42,7 +42,8 @@ export const VideosNavbar: React.FC<VideosNavbarProps> = ({videos, categories}) 
             <VideoItem
               key={video.id}
               onClick={handleClick}
-              data-testid="video-item">
+              data-testid="video-item"
+              videoId={video.id}>
               {video.title}
             </VideoItem>,
           )}

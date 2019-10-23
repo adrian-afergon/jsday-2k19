@@ -5,5 +5,5 @@ import { action } from '@storybook/addon-actions';
 
 storiesOf('VideoItem', module)
   .add('with text', () => (
-  <VideoItem onClick={action('clicked')}/>
+  <VideoItem videoId={'irrelevant id'} onClick={action('clicked')}/>
 ));

@@ -1,17 +1,19 @@
 import * as React from 'react';
 import './VideoItem.scss';
+import { VideoId } from '../../models/video';
 
 interface VideoItemProps {
-  onClick: () => void;
+  onClick: (videoId: VideoId) => void;
+  videoId: VideoId;
   'data-testid'?: string;
 }
-export const VideoItem: React.FC<VideoItemProps> = ({onClick, children, ...props}) => (
-  <div
+export const VideoItem: React.FC<VideoItemProps> = ({onClick, videoId, children, ...props}) => (
+  <button
     data-testid={props['data-testid']}
     className="VideoItem"
-    onClick={(event) => {onClick(); }}>
+    onClick={() => {onClick(videoId); }}>
     {children}
-  </div>
+  </button>
 );
 
 VideoItem.displayName = 'VideoItem';

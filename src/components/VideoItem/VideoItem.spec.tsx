@@ -5,13 +5,15 @@ import { VideoItem} from './';
 describe('VideoItem', () => {
   let selectAVideo: () => void;
   let aVideoName: string;
+  let aVideoId: string;
   let videoItem: RenderResult;
 
   beforeEach(() => {
     selectAVideo = jest.fn();
     aVideoName = 'irrelevant video name';
+    aVideoId = 'irrelevant video id'
     videoItem = render(
-      <VideoItem onClick={selectAVideo}>{aVideoName}</VideoItem>,
+      <VideoItem onClick={selectAVideo} videoId={aVideoId}>{aVideoName}</VideoItem>,
     );
   });
 
@@ -21,6 +23,6 @@ describe('VideoItem', () => {
 
   it('should do something when is clicked', () => {
     fireEvent.click(videoItem.getByText(aVideoName));
-    expect(selectAVideo).toHaveBeenCalled();
+    expect(selectAVideo).toHaveBeenCalledWith(aVideoId);
   });
 });
