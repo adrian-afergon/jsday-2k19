@@ -13,7 +13,7 @@ export const VideoDetails: React.FC<VideoDetailsProps> = ({selectedVideo, onSave
   <div className="VideoDetails">
     {selectedVideo ?
       <div data-testid={`video-details-${selectedVideo.id}`}>
-        <h2>{selectedVideo.title}</h2>
+        <h2 data-testid={`video-details-title-${selectedVideo.id}`}>{selectedVideo.title}</h2>
         <iframe src={selectedVideo.url} title={selectedVideo.title} />
         {selectedVideo.comments && selectedVideo.comments.length > 0 ?
           selectedVideo.comments.map((comment) => <Commment>{comment}</Commment>) :
