@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Videos } from './containers/Videos';
+import { AppDependencies, initializeDependencies } from './AppDependencies';
 
 const App: React.FC = () => {
+
+  const dependencies: AppDependencies = initializeDependencies();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-header" >
+        My videos
       </header>
+      <Videos dependencies={dependencies}/>
     </div>
   );
-}
+};
 
 export default App;

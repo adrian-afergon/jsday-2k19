@@ -1,0 +1,28 @@
+.ReplyComment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  textarea {
+    height: 8rem;
+    width: 60rem;
+    margin: .5rem;
+  }
+
+  button {
+    cursor: pointer;
+    color: #fff;
+    background-color: #007bff;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1rem;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    width: 8rem;
+    border: none;
+  }
+
+}
