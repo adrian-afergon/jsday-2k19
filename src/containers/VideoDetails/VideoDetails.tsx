@@ -16,7 +16,7 @@ export const VideoDetails: React.FC<VideoDetailsProps> = ({selectedVideo, onSave
         <h2>{selectedVideo.title}</h2>
         <iframe src={selectedVideo.url} title={selectedVideo.title} />
         {selectedVideo.comments && selectedVideo.comments.length > 0 ?
-          selectedVideo.comments.map((comment) => <Commment>{comment}</Commment>) :
+          selectedVideo.comments.map((comment, index) => <Commment key={`comment-${index}`}>{comment}</Commment>) :
           <p>No comments yet</p>
         }
         <ReplyComment onSave={onSave}/>
