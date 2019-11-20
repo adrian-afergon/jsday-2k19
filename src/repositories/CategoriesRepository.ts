@@ -1,3 +1,3 @@
-export interface CategoriesRepository {
-  getCategories: () => Promise<string[]>;
+export class CategoriesRepository {
+  public getCategories: () => Promise<string[]> = () => Promise.resolve(['terror', 'action']);
 }

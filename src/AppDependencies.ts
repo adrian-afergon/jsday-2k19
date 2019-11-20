@@ -7,11 +7,6 @@ export interface AppDependencies {
 }
 
 export const initializeDependencies = (): AppDependencies => ({
-  videosRepository: {
-    getVideos: () => Promise.resolve([]),
-    saveComments: (comment: string) => Promise.resolve(),
-  },
-  categoriesRepository: {
-    getCategories: () => Promise.resolve([]),
-  },
+  videosRepository: new VideosRepository(),
+  categoriesRepository: new CategoriesRepository(),
 } as AppDependencies);

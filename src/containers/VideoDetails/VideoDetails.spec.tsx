@@ -34,7 +34,7 @@ describe('VideoDetails', () => {
       renderResult.findAllByText('No comments added yet'),
     ).toBeTruthy();
   });
-  it('should not display a message when comments added', () => {
+  xit('should not display a message when comments added', () => {
     const video = buildVideoWidth({id: '1', comments: ['This is an irrelevant comment']});
 
     const renderResult: RenderResult = render(

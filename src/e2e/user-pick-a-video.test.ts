@@ -33,6 +33,6 @@ describe('New Comment', () => {
     }
 
     const html = await page.$eval('[data-testid="video-details-title-1"]', (e: any) => e.innerHTML);
-    expect(html).toBe('Video 1');
+    expect(html).toBe('La amiga imaginaria y otros relatos de terror');
   });
 });
